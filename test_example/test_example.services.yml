@@ -1,0 +1,2 @@
+test_example.conversions:
+  class: Drupal\test_example\TestExampleConversions
