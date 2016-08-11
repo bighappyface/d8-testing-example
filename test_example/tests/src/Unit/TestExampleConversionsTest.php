@@ -28,10 +28,24 @@ class TestExampleConversionsTest extends UnitTestCase {
 
   /**
    * A simple test that tests our celsiusToFahrenheit() function.
+   *
+   * @dataProvider providerCelsiusToFarenheit
    */
-  public function testOneConversion() {
+  public function testOneConversion($celsius, $expectedFarenheit) {
     // Confirm that 0C = 32F.
-    $this->assertEquals(32, $this->conversionService->celsiusToFahrenheit(0));
+    $this->assertEquals($celsius, $this->conversionService->celsiusToFahrenheit($expectedFarenheit));
+  }
+
+  /**
+   *	Provides temperatures to test conversion.
+   *
+   * @return array
+   */
+  public function providerCelsiusToFarenheit() {
+    return [
+      [32, 0],
+      [95, 35]
+    ];
   }
 
 }
