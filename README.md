@@ -2,7 +2,10 @@
 
 This example application demonstrates unit and functional testing in Drupal 8.
 
-The tests are examples provided by Acquia: https://docs.acquia.com/articles/drupal-8-unit-testing
+The tests are adapted from:
+
+https://docs.acquia.com/articles/drupal-8-unit-testing
+https://www.drupal.org/project/examples
 
 ## Requirements
 
@@ -17,10 +20,11 @@ The tests are examples provided by Acquia: https://docs.acquia.com/articles/drup
 5. Run `drush en simpletest` to install Simpletest
 6. Run `cp -r ../test_example modules` to add the `test_example` module to the dev application
 
+## Running the tests
+
+Run `php core/scripts/run-tests.sh --url http://localhost:8383 --color --verbose --module test_example`
 
 ## Unit Tests
-
-Run `php core/scripts/run-tests.sh --color --verbose --module test_example`
 
 The `Drupal\Tests\test_example\Unit\TestExampleConversionsTest` test demonstrates a unit test of a Drupal 8 service as well as a PHPUnit data provider.
 

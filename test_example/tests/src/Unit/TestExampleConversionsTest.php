@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  *
@@ -31,8 +30,7 @@ class TestExampleConversionsTest extends UnitTestCase {
    *
    * @dataProvider providerCelsiusToFarenheit
    */
-  public function testOneConversion($celsius, $expectedFarenheit) {
-    // Confirm that 0C = 32F.
+  public function testConversions($celsius, $expectedFarenheit) {
     $this->assertEquals($celsius, $this->conversionService->celsiusToFahrenheit($expectedFarenheit));
   }
 
