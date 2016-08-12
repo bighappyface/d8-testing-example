@@ -21,7 +21,7 @@ use Drupal\simpletest\BrowserTestBase;
  * Functional test cases are far slower to execute than unit test cases because
  * they require a complete Drupal install to be done for each test.
  *
- * @see Drupal\simpletest\WebTestBase
+ * @see Drupal\simpletest\BrowserTestBase
  * @see SimpleTestUnitTestExampleTestCase
  *
  * @ingroup test_example
@@ -32,6 +32,13 @@ use Drupal\simpletest\BrowserTestBase;
  * @group examples
  */
 class TestExampleFunctionalTest extends BrowserTestBase {
+
+  /**
+   * The installation profile to use with this test.
+   *
+   * @var string
+   */
+  protected $profile = 'standard';
 
   /**
    * Test node creation through the user interface.
@@ -47,8 +54,8 @@ class TestExampleFunctionalTest extends BrowserTestBase {
 
     // Create a node using the node/add form.
     $edit = [];
-    $edit['title[0][value]'] = $this->randomMachineName(8);
-    $edit['body[0][value]'] = $this->randomMachineName(16);
+    $edit['title[0][value]'] = $this->randomMachineName(32);
+    $edit['body[0][value]'] = $this->randomMachineName(32);
     $this->drupalPostForm('node/add/article', $edit, t('Save and publish'));
 
     // Check that our article node has been created.
@@ -59,16 +66,6 @@ class TestExampleFunctionalTest extends BrowserTestBase {
     // Check that the node exists in the database.
     $node = $this->drupalGetNodeByTitle($edit['title[0][value]']);
     $this->assertTrue($node, 'Node found in database.');
-
-    // Verify 'submitted by' information. Drupal adds a newline in there, so
-    // we have to check for that.
-    $submitted_by = t("Submitted by @username\n on @datetime", [
-      '@username' => $this->loggedInUser->getUsername(),
-      '@datetime' => format_date($node->getCreatedTime()),
-    ]);
-
-    $this->drupalGet('node/' . $node->id());
-    $this->assertText($submitted_by);
   }
 
 }

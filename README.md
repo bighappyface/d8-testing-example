@@ -22,7 +22,7 @@ https://www.drupal.org/project/examples
 
 ## Running the tests
 
-Run `php core/scripts/run-tests.sh --url http://localhost:8383 --color --verbose --module test_example`
+Run `php core/scripts/run-tests.sh --url http://localhost:8383 --color --module test_example`
 
 ## Unit Tests
 
